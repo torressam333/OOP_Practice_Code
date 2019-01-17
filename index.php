@@ -1,41 +1,20 @@
 <?php
 
-//Classes = data + behavior
+spl_autoload_register(function($className){
+    include 'src/' .$className . '.php';
+});
 
+header('Content-Type:text/plain', true);
 
-class Video
-{
-    public $type;
-    public $duration;
-    public $published = false;
-    public $title;
+$pdo = (new PDOClient('mysql', 'localhost', 'store', 'root', 'root'))->connect();
 
-    public function __construct($type, $duration, $title)
-    {
-        $this->type = $type;
-        $this->duration = $duration;
-        $this->title = $title;
-    }
+$products = $pdo->select('SELECT * FROM products')->get();
 
-    public function play()
-    {
-        return $this->published ? "The video is playing" : "This video is not yet available";
-    }
+$handler = $mysqli->getConnction();
 
-    public function pause()
-    {
-        return $this->published ? "The video has been paused " : "";
-    }
+$p = $handler->query("SELECT * FROM products where id  > 6")->fetch();
 
+var_dump($p);
+foreach ($products as $product){
+    var_dump($products->name);
 }
-//header('Content-Type:text/plain', true);
-
-$introduction = new Video("MP4", "10:30", "Intro to OOP");
-$introduction->published = true;
-echo $introduction->play(),PHP_EOL, $introduction->pause(), PHP_EOL;
-
-$video2 = new video("MP4", "9:30", "Intro to OOP Video 2");
-echo $video2->play(),PHP_EOL, $video2->pause(), PHP_EOL;
-
-//var_dump($introduction);
-
