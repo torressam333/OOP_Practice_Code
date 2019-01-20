@@ -1,0 +1,19 @@
+{
+    "name": "torre/oop_bootcamp",
+    "description": "oop bootcamp",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Samuel Torres",
+            "email": "torressam333@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4":{
+            "": "src"
+
+        }
+    },
+    "require": {}
+}
